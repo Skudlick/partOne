@@ -1,12 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { useState } from 'react'
+import ReactDOM from 'react-dom'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const App = () => {
+  // save clicks of each button to own state
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  const setToGood = (toGood) => () => setGood(toGood)
+  const setToNeutral = (toNeutral) => () => setNeutral(toNeutral)
+  const setToBad = (toBad) => () => setBad(toBad)
+
+  return (
+    <div>
+        <h1>give feedback</h1>
+        <button onClick={setToGood(good +1)}>good</button>
+        <button onClick={setToNeutral(neutral +1)}>neutral</button>
+        <button onClick={setToBad(bad +1)}>bad</button>
+        <h1>statistics</h1>
+        <p>good {good}</p>
+        <p>neutral {neutral}</p>
+        <p>bad {bad}</p>
+    </div>
+  )
+}
+
+ReactDOM.render(<App />, 
+  document.getElementById('root')
+)
