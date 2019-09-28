@@ -2,6 +2,14 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
 const Statistics = (props) => {
+    if (props.stats.all === 0){
+        return (
+            <div>
+                <h1>statistics</h1>
+                <h2>No feedback given</h2>
+            </div>
+        )
+    }
     return(
         <div>
             <h1>statistics</h1>
